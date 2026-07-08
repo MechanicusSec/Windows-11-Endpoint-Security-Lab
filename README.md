@@ -20,30 +20,30 @@ The project demonstrates how a technician can inspect security settings, verify 
 
 ## Lab environment
 
-| Component           | Description                                                                      |
-| ------------------- | -------------------------------------------------------------------------------- |
-| Host system         | Windows workstation used for documentation, screenshots, Git and GitHub workflow |
-| Lab system          | Windows 11 virtual machine                                                       |
-| Virtualization      | VMware-based Windows 11 VM                                                       |
-| Lab user            | Local lab account                                                                |
-| Documentation tools | VS Code, Markdown, Git and GitHub                                                |
-| Evidence            | Screenshots, results notes and final report                                      |
+| Component | Description |
+| --- | --- |
+| Host system | Windows workstation used for documentation, screenshots, Git and GitHub workflow |
+| Lab system | Windows 11 virtual machine |
+| Virtualization | VMware-based Windows 11 VM |
+| Lab user | Local lab account |
+| Documentation tools | VS Code, Markdown, Git and GitHub |
+| Evidence | Screenshots, results notes and final report |
 
 ## Planned parts
 
-| Part    | Topic                                 | Status      |
-| ------- | ------------------------------------- | ----------- |
-| Part 1  | Project setup                         | In progress |
-| Part 2  | Windows Security baseline             | Planned     |
-| Part 3  | Microsoft Defender review             | Planned     |
-| Part 4  | Windows Firewall review               | Planned     |
-| Part 5  | UAC and admin rights review           | Planned     |
-| Part 6  | BitLocker or device encryption review | Planned     |
-| Part 7  | Apps and startup review               | Planned     |
-| Part 8  | Security Event Viewer review          | Planned     |
-| Part 9  | Local folder permissions review       | Planned     |
-| Part 10 | Security command notes                | Planned     |
-| Part 11 | Final endpoint security report        | Planned     |
+| Part | Topic | Status |
+| --- | --- | --- |
+| Part 1 | Project setup | Complete |
+| Part 2 | Windows Security baseline | Planned |
+| Part 3 | Microsoft Defender review | Planned |
+| Part 4 | Windows Firewall review | Planned |
+| Part 5 | UAC and admin rights review | Planned |
+| Part 6 | BitLocker or device encryption review | Planned |
+| Part 7 | Apps and startup review | Planned |
+| Part 8 | Security Event Viewer review | Planned |
+| Part 9 | Local folder permissions review | Planned |
+| Part 10 | Security command notes | Planned |
+| Part 11 | Final endpoint security report | Planned |
 
 ## Project structure
 
@@ -57,6 +57,19 @@ Windows-11-Endpoint-Security-Lab/
 ├── logbook.md
 └── README.md
 ```
+
+## Current evidence
+
+| Screenshot | Description |
+| --- | --- |
+| screenshots/screenshot-01-project-structure.png | Shows the initial project folder structure. |
+
+## Results and documentation
+
+| File | Description |
+| --- | --- |
+| README.md | Main project overview and progress tracker. |
+| logbook.md | Chronological project logbook. |
 
 ## Skills demonstrated
 
@@ -78,6 +91,33 @@ This lab will demonstrate:
 * Screenshot evidence collection.
 * Technical documentation.
 * Git and GitHub workflow.
+
+## Tools and commands used
+
+| Tool or command | Purpose |
+| --- | --- |
+| File Explorer | Used to create and review the project folder. |
+| VS Code | Used to edit Markdown documentation and manage project files. |
+| PowerShell terminal | Used to create folders, create files and run Git commands. |
+| Git | Used for local version control. |
+| GitHub | Used to publish the project as portfolio evidence. |
+| `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
+| `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
+| `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
+| `tree /F` | Shows the project folder structure and files. |
+| `git init` | Initializes the local Git repository. |
+| `git add` | Stages files for commit. |
+| `git commit` | Creates a local Git checkpoint. |
+| `git remote add origin` | Connects the local repository to GitHub. |
+| `git branch -M main` | Renames the current branch to main. |
+| `git push` | Uploads local commits to GitHub. |
+| `git status` | Shows the current Git working tree state. |
+
+## Project evidence policy
+
+Screenshots in this project should focus on the actual Windows 11 endpoint security work and project files.
+
+GitHub repository pages and push screens are not required as screenshot evidence unless specifically needed later. GitHub activity is documented through Git commits and the project documentation instead.
 
 ## Privacy notes
 
