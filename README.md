@@ -4,7 +4,7 @@
 
 Windows 11 Endpoint Security Lab is a practical IT support and junior sysadmin portfolio project focused on reviewing and documenting the basic security posture of a Windows 11 endpoint.
 
-The lab covers Windows Security, Microsoft Defender, Windows Firewall, User Account Control, local users and groups, BitLocker or device encryption review, installed apps, startup apps, security event logs, folder permissions and final reporting.
+The lab covers Windows Security, Windows Defender Firewall, User Account Control, local users and groups, BitLocker or device encryption review, installed apps, startup apps, security event logs, folder permissions, command notes and final reporting.
 
 This project uses a safe local lab environment only.
 
@@ -34,16 +34,15 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part | Topic | Status |
 | --- | --- | --- |
 | Part 1 | Project setup | Complete |
-| Part 2 | Windows Security baseline | Planned |
-| Part 3 | Microsoft Defender review | Planned |
-| Part 4 | Windows Firewall review | Planned |
-| Part 5 | UAC and admin rights review | Planned |
-| Part 6 | BitLocker or device encryption review | Planned |
-| Part 7 | Apps and startup review | Planned |
-| Part 8 | Security Event Viewer review | Planned |
-| Part 9 | Local folder permissions review | Planned |
-| Part 10 | Security command notes | Planned |
-| Part 11 | Final endpoint security report | Planned |
+| Part 2 | Windows Security baseline | Complete |
+| Part 3 | Windows Firewall review | Complete |
+| Part 4 | UAC and admin rights review | Planned |
+| Part 5 | BitLocker or device encryption review | Planned |
+| Part 6 | Apps and startup review | Planned |
+| Part 7 | Security Event Viewer review | Planned |
+| Part 8 | Local folder permissions review | Planned |
+| Part 9 | Security command notes | Planned |
+| Part 10 | Final endpoint security report | Planned |
 
 ## Project structure
 
@@ -63,6 +62,18 @@ Windows-11-Endpoint-Security-Lab/
 | Screenshot | Description |
 | --- | --- |
 | screenshots/screenshot-01-project-structure.png | Shows the initial project folder structure. |
+| screenshots/screenshot-02a-windows-security-home.png | Shows the Windows Security home dashboard. |
+| screenshots/screenshot-02b-virus-threat-protection.png | Shows Virus & threat protection. |
+| screenshots/screenshot-02c-account-protection.png | Shows Account protection. |
+| screenshots/screenshot-02d-firewall-network-protection.png | Shows Firewall & network protection during the baseline review. |
+| screenshots/screenshot-02e-app-browser-control.png | Shows App & browser control. |
+| screenshots/screenshot-02f-device-security.png | Shows Device security. |
+| screenshots/screenshot-02g-defender-powershell-status.png | Shows Microsoft Defender status checked with PowerShell. |
+| screenshots/screenshot-03a-firewall-network-protection.png | Shows Firewall & network protection during the firewall review. |
+| screenshots/screenshot-03b-firewall-active-profile.png | Shows the active firewall network profile. |
+| screenshots/screenshot-03c-firewall-allowed-apps.png | Shows the allowed apps through firewall view. |
+| screenshots/screenshot-03d-firewall-powershell-profiles.png | Shows firewall profile status checked with PowerShell. |
+| screenshots/screenshot-03e-firewall-powershell-rules.png | Shows a sample of firewall rules listed with PowerShell. |
 
 ## Results and documentation
 
@@ -70,15 +81,21 @@ Windows-11-Endpoint-Security-Lab/
 | --- | --- |
 | README.md | Main project overview and progress tracker. |
 | logbook.md | Chronological project logbook. |
+| results/windows-security-baseline-results.txt | Written summary of the Windows Security baseline review. |
+| results/windows-firewall-review-results.txt | Written summary of the Windows Firewall review. |
 
 ## Skills demonstrated
 
-This lab will demonstrate:
+This lab demonstrates:
 
 * Windows 11 endpoint security review.
 * Windows Security navigation.
-* Microsoft Defender review.
+* Microsoft Defender baseline review.
 * Windows Firewall review.
+* Firewall profile inspection.
+* Allowed apps through firewall review.
+* PowerShell firewall verification.
+* PowerShell security status verification.
 * User Account Control review.
 * Local users and groups inspection.
 * Local administrator membership review.
@@ -87,7 +104,6 @@ This lab will demonstrate:
 * Startup apps review.
 * Security event log review.
 * NTFS folder permission review.
-* PowerShell verification.
 * Screenshot evidence collection.
 * Technical documentation.
 * Git and GitHub workflow.
@@ -101,6 +117,14 @@ This lab will demonstrate:
 | PowerShell terminal | Used to create folders, create files and run Git commands. |
 | Git | Used for local version control. |
 | GitHub | Used to publish the project as portfolio evidence. |
+| Windows Settings | Used to open Windows Security and review endpoint settings. |
+| Windows Security | Used to review built-in Windows endpoint security areas. |
+| Virus & threat protection | Used to review Microsoft Defender Antivirus baseline status. |
+| Account protection | Used to review account-related security areas. |
+| Firewall & network protection | Used to review Windows Defender Firewall status. |
+| App & browser control | Used to review reputation-based protection and exploit protection areas. |
+| Device security | Used to review device security and hardware-backed security areas. |
+| Allowed apps through firewall | Used to review which apps are allowed through Windows Defender Firewall. |
 | `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
 | `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
 | `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
@@ -112,6 +136,23 @@ This lab will demonstrate:
 | `git branch -M main` | Renames the current branch to main. |
 | `git push` | Uploads local commits to GitHub. |
 | `git status` | Shows the current Git working tree state. |
+| `Get-MpComputerStatus` | Shows Microsoft Defender Antivirus status and protection state. |
+| `Get-NetFirewallProfile` | Shows Windows Defender Firewall profile configuration for Domain, Private and Public profiles. |
+| `Get-NetFirewallRule \| Select-Object -First 10` | Lists a small sample of Windows Defender Firewall rules. |
+
+## Key endpoint security lessons
+
+### Windows Security baseline
+
+Part 2 demonstrated how to open and review the main Windows Security dashboard.
+
+The lab reviewed Virus & threat protection, Account protection, Firewall & network protection, App & browser control and Device security. PowerShell was then used to verify Microsoft Defender status with `Get-MpComputerStatus`.
+
+### Windows Firewall review
+
+Part 3 demonstrated how to review Windows Defender Firewall through the GUI and PowerShell.
+
+The lab reviewed the active network profile, allowed apps through firewall, firewall profile status and a sample of firewall rules. This showed how a technician can confirm that firewall protections are visible and configurable through normal Windows tools.
 
 ## Project evidence policy
 

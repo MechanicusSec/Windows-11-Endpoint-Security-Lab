@@ -236,3 +236,134 @@ Some security features may appear differently inside a virtual machine compared 
 This part focused on GUI-first endpoint security review.
 
 Windows Security is the normal graphical dashboard that a helpdesk technician or junior sysadmin can use to inspect built-in Windows protection areas. PowerShell was used afterward to confirm Defender status with command-line evidence.
+
+
+---
+
+## 2026-07-08 — Part 3: Windows Firewall review
+
+### Goal
+
+Review Windows Defender Firewall status and basic firewall configuration in the Windows 11 lab VM.
+
+The purpose of this part was to inspect the firewall through the Windows Security graphical interface, review the active network profile, check allowed apps through the firewall and verify firewall profile settings with PowerShell.
+
+### Work completed
+
+* Opened Windows Security from Windows Settings.
+* Opened Firewall & network protection.
+* Reviewed the available firewall network profiles.
+* Opened the active firewall network profile.
+* Reviewed Microsoft Defender Firewall status for the active profile.
+* Reviewed the allowed apps through firewall view.
+* Opened PowerShell in the Windows 11 VM.
+* Checked firewall profile status with `Get-NetFirewallProfile`.
+* Listed a sample of firewall rules with `Get-NetFirewallRule | Select-Object -First 10`.
+* Created `results/windows-firewall-review-results.txt`.
+* Captured screenshot evidence for the Windows Firewall review.
+
+### GUI paths used
+
+```text
+Start
+→ Settings
+→ Privacy & security
+→ Windows Security
+→ Open Windows Security
+```
+
+```text
+Windows Security
+→ Firewall & network protection
+```
+
+```text
+Firewall & network protection
+→ Active network profile
+```
+
+```text
+Firewall & network protection
+→ Allow an app through firewall
+```
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Firewall & network protection | Shows Windows Defender Firewall status for domain, private and public network profiles. |
+| Domain network | Firewall profile normally used when connected to an Active Directory domain network. |
+| Private network | Firewall profile normally used for trusted home, lab or internal networks. |
+| Public network | Firewall profile normally used for untrusted networks such as cafés, hotels or public Wi-Fi. |
+| Active firewall profile | Shows the firewall settings currently applied to the active network connection. |
+| Allowed apps through firewall | Shows applications allowed to communicate through Windows Defender Firewall. |
+
+### PowerShell commands used
+
+```powershell
+Get-NetFirewallProfile
+Get-NetFirewallRule | Select-Object -First 10
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-NetFirewallProfile` | Shows firewall configuration for the Domain, Private and Public profiles, including whether each profile is enabled. |
+| `Get-NetFirewallRule` | Lists Windows Defender Firewall rules. |
+| `Select-Object -First 10` | Limits the output to the first 10 firewall rules so the terminal output remains readable. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Firewall & network protection | Opened and reviewed successfully. |
+| Network profiles | Domain, Private and Public firewall profiles were reviewed. |
+| Active profile | The active firewall network profile was opened and reviewed. |
+| Defender Firewall status | Firewall status for the active profile was reviewed. |
+| Allowed apps | The allowed apps through firewall list was opened and reviewed. |
+| PowerShell profile check | Firewall profiles were checked with `Get-NetFirewallProfile`. |
+| PowerShell rule sample | A sample of firewall rules was listed with `Get-NetFirewallRule`. |
+| Results file | `results/windows-firewall-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The Windows Firewall review was completed successfully.
+
+This part demonstrated how to review Windows Defender Firewall status using the Windows Security GUI and how to verify firewall profiles and firewall rules using PowerShell.
+
+The active network profile may differ depending on the Windows 11 VM network configuration. A lab VM may show Private or Public as the active profile, and that should be documented as the observed lab state.
+
+### Screenshot evidence
+
+#### Firewall & network protection
+
+![Firewall & network protection](screenshots/screenshot-03a-firewall-network-protection.png)
+
+#### Active firewall profile
+
+![Active firewall profile](screenshots/screenshot-03b-firewall-active-profile.png)
+
+#### Allowed apps through firewall
+
+![Allowed apps through firewall](screenshots/screenshot-03c-firewall-allowed-apps.png)
+
+#### PowerShell firewall profiles
+
+![PowerShell firewall profiles](screenshots/screenshot-03d-firewall-powershell-profiles.png)
+
+#### PowerShell firewall rules
+
+![PowerShell firewall rules](screenshots/screenshot-03e-firewall-powershell-rules.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-firewall-review-results.txt | Contains the written Windows Firewall review findings and conclusion. |
+
+### Notes
+
+This part focused on Windows Defender Firewall as a core endpoint security control.
+
+The GUI review shows where a technician can inspect firewall status and allowed apps. PowerShell verification provides command-line evidence of firewall profile configuration and firewall rules.
