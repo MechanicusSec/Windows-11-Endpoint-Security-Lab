@@ -37,7 +37,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 2 | Windows Security baseline | Complete |
 | Part 3 | Windows Firewall review | Complete |
 | Part 4 | UAC and admin rights review | Complete |
-| Part 5 | BitLocker or device encryption review | Planned |
+| Part 5 | BitLocker or device encryption review | Complete |
 | Part 6 | Apps and startup review | Planned |
 | Part 7 | Security Event Viewer review | Planned |
 | Part 8 | Local folder permissions review | Planned |
@@ -80,6 +80,10 @@ Windows-11-Endpoint-Security-Lab/
 | screenshots/screenshot-04d-administrators-group-members.png | Shows local Administrators group members. |
 | screenshots/screenshot-04e-powershell-local-users.png | Shows local users listed with PowerShell. |
 | screenshots/screenshot-04f-powershell-administrators-group.png | Shows local Administrators group members listed with PowerShell. |
+| screenshots/screenshot-05a-device-encryption-settings.png | Shows Device encryption settings or search result. |
+| screenshots/screenshot-05b-bitlocker-control-panel.png | Shows BitLocker Drive Encryption in Control Panel. |
+| screenshots/screenshot-05d-manage-bde-status-admin.png | Shows BitLocker status checked with manage-bde from an elevated PowerShell session. |
+| screenshots/screenshot-05e-powershell-bitlocker-volume.png | Shows BitLocker volume status checked with PowerShell. |
 
 ## Results and documentation
 
@@ -90,6 +94,7 @@ Windows-11-Endpoint-Security-Lab/
 | results/windows-security-baseline-results.txt | Written summary of the Windows Security baseline review. |
 | results/windows-firewall-review-results.txt | Written summary of the Windows Firewall review. |
 | results/uac-admin-rights-review-results.txt | Written summary of the UAC and admin rights review. |
+| results/bitlocker-device-encryption-review-results.txt | Written summary of the BitLocker or device encryption review. |
 
 ## Skills demonstrated
 
@@ -110,6 +115,9 @@ This lab demonstrates:
 * Computer Management navigation.
 * PowerShell local account verification.
 * BitLocker or device encryption status review.
+* BitLocker Control Panel review.
+* Device encryption availability review.
+* Disk encryption command-line verification.
 * Installed apps review.
 * Startup apps review.
 * Security event log review.
@@ -139,6 +147,10 @@ This lab demonstrates:
 | Computer Management | Used to review local users and local groups. |
 | Local Users and Groups | Used to inspect local accounts and group membership. |
 | Administrators group | Used to identify accounts with local administrator rights. |
+| Device encryption settings | Used to review whether Windows Device encryption is available. |
+| Control Panel | Used to access the classic BitLocker Drive Encryption interface. |
+| BitLocker Drive Encryption | Used to review drive encryption status and BitLocker management options. |
+| Elevated PowerShell | Used to run BitLocker commands that require administrative rights. |
 | `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
 | `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
 | `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
@@ -155,6 +167,8 @@ This lab demonstrates:
 | `Get-NetFirewallRule \| Select-Object -First 10` | Lists a small sample of Windows Defender Firewall rules. |
 | `Get-LocalUser` | Lists local user accounts on the Windows machine. |
 | `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
+| `manage-bde -status` | Shows BitLocker status for available volumes. |
+| `Get-BitLockerVolume` | Shows BitLocker volume status through PowerShell. |
 
 ## Key endpoint security lessons
 
@@ -175,6 +189,12 @@ The lab reviewed the active network profile, allowed apps through firewall, fire
 Part 4 demonstrated how to review User Account Control settings and local administrator membership.
 
 The lab reviewed UAC settings, local users, local user account properties, the Administrators group and PowerShell verification of local accounts and administrator membership. This showed how a technician can identify which accounts exist locally and which accounts have elevated privileges.
+
+### BitLocker or device encryption review
+
+Part 5 demonstrated how to review Windows drive encryption status.
+
+The lab reviewed Device encryption settings, BitLocker Drive Encryption in Control Panel, `manage-bde -status` from an elevated PowerShell session and `Get-BitLockerVolume`. This showed how a technician can verify whether drive encryption is available, enabled, disabled or limited in a Windows 11 VM.
 
 ## Project evidence policy
 

@@ -509,3 +509,129 @@ Local administrator rights should always be reviewed carefully. In a lab VM, the
 This part focused on account elevation and local administrator access as endpoint security controls.
 
 UAC helps reduce silent system-level changes by requiring confirmation for administrative actions. Local administrator membership is important because accounts with local admin rights can make system-wide changes.
+
+---
+
+## 2026-07-08 — Part 5: BitLocker or device encryption review
+
+### Goal
+
+Review BitLocker or Device encryption availability and drive encryption status in the Windows 11 lab VM.
+
+The purpose of this part was to check whether Windows drive encryption features were available in the VM and verify the encryption state using GUI tools and command-line tools.
+
+### Work completed
+
+* Opened or searched for Device encryption settings.
+* Reviewed BitLocker Drive Encryption in Control Panel.
+* Opened PowerShell in the Windows 11 VM.
+* Ran `manage-bde -status` to check BitLocker drive encryption status.
+* Confirmed that `manage-bde -status` required administrative rights when run without elevation.
+* Ran `manage-bde -status` again from an elevated PowerShell session.
+* Checked BitLocker volume status with `Get-BitLockerVolume`.
+* Created `results/bitlocker-device-encryption-review-results.txt`.
+* Captured screenshot evidence for the BitLocker or device encryption review.
+
+### GUI paths used
+
+```text
+Start
+→ Settings
+→ Privacy & security
+→ Device encryption
+```
+
+```text
+Start
+→ Search
+→ Device encryption
+```
+
+```text
+Start
+→ Search
+→ Control Panel
+→ System and Security
+→ BitLocker Drive Encryption
+```
+
+```text
+Win + R
+→ control
+→ System and Security
+→ BitLocker Drive Encryption
+```
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Device encryption settings | Shows whether Windows Device encryption is available and enabled. |
+| BitLocker Drive Encryption | Shows BitLocker status and management options for available drives. |
+| System drive encryption status | Shows whether the Windows system drive is encrypted, decrypted or protected. |
+| Elevated PowerShell session | Allows BitLocker management commands that require administrative rights. |
+
+### Commands used
+
+```powershell
+manage-bde -status
+Get-BitLockerVolume
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `manage-bde -status` | Shows BitLocker status for available volumes, including encryption state and protection status. |
+| `Get-BitLockerVolume` | Shows BitLocker volume information through PowerShell, including mount point, volume status, protection status and encryption percentage where available. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Device encryption settings | Device encryption settings were opened or searched for in Windows Settings. |
+| BitLocker Control Panel | BitLocker Drive Encryption was reviewed in Control Panel. |
+| Non-admin manage-bde check | `manage-bde -status` required administrative rights when run without elevation. |
+| Admin manage-bde check | `manage-bde -status` was run from an elevated PowerShell session. |
+| PowerShell BitLocker check | BitLocker volume status was checked with `Get-BitLockerVolume`. |
+| Results file | `results/bitlocker-device-encryption-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The BitLocker or device encryption review was completed successfully.
+
+This part demonstrated how to check whether Windows drive encryption features are available and how to verify encryption status using Windows Settings, Control Panel and PowerShell.
+
+BitLocker or Device encryption may behave differently in a virtual machine compared to physical hardware. If encryption is unavailable, disabled or limited in the VM, this should be documented as the observed lab state, not treated as an error.
+
+### Screenshot evidence
+
+#### Device encryption settings
+
+![Device encryption settings](screenshots/screenshot-05a-device-encryption-settings.png)
+
+#### BitLocker Control Panel
+
+![BitLocker Control Panel](screenshots/screenshot-05b-bitlocker-control-panel.png)
+
+#### Manage-bde status as administrator
+
+![Manage-bde status as administrator](screenshots/screenshot-05d-manage-bde-status-admin.png)
+
+#### PowerShell BitLocker volume
+
+![PowerShell BitLocker volume](screenshots/screenshot-05e-powershell-bitlocker-volume.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/bitlocker-device-encryption-review-results.txt | Contains the written BitLocker or device encryption review findings and conclusion. |
+
+### Notes
+
+This part focused on disk encryption as an endpoint security control.
+
+Disk encryption helps protect data if a device is lost, stolen or accessed offline. In a lab VM, encryption features may be unavailable, disabled or limited depending on Windows edition, virtual hardware and configuration.
+
+Some BitLocker commands require administrative rights. If access is denied in a normal PowerShell session, the command should be rerun from PowerShell opened as Administrator.
