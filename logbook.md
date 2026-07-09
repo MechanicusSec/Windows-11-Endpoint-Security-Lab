@@ -367,3 +367,145 @@ The active network profile may differ depending on the Windows 11 VM network con
 This part focused on Windows Defender Firewall as a core endpoint security control.
 
 The GUI review shows where a technician can inspect firewall status and allowed apps. PowerShell verification provides command-line evidence of firewall profile configuration and firewall rules.
+
+---
+
+## 2026-07-08 — Part 4: UAC and admin rights review
+
+### Goal
+
+Review User Account Control settings and local administrator membership in the Windows 11 lab VM.
+
+The purpose of this part was to inspect how Windows handles elevation prompts, local accounts and administrator group membership using GUI tools first, followed by PowerShell verification.
+
+### Work completed
+
+* Opened User Account Control settings.
+* Reviewed the UAC notification level.
+* Opened Computer Management.
+* Opened Local Users and Groups.
+* Reviewed local users.
+* Opened the lab user account properties.
+* Reviewed the local Administrators group members.
+* Opened PowerShell in the Windows 11 VM.
+* Listed local users with `Get-LocalUser`.
+* Listed local Administrators group members with `Get-LocalGroupMember Administrators`.
+* Created `results/uac-admin-rights-review-results.txt`.
+* Captured screenshot evidence for the UAC and admin rights review.
+
+### GUI paths used
+
+```text
+Start
+→ Search
+→ Change User Account Control settings
+```
+
+```text
+Start
+→ Search
+→ Computer Management
+```
+
+```text
+Win + R
+→ compmgmt.msc
+```
+
+```text
+Computer Management
+→ System Tools
+→ Local Users and Groups
+→ Users
+```
+
+```text
+Computer Management
+→ System Tools
+→ Local Users and Groups
+→ Groups
+→ Administrators
+```
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| User Account Control settings | Shows the Windows notification level for administrative elevation prompts. |
+| Computer Management | Windows administrative console used to review local system management areas. |
+| Local Users and Groups | Shows local user accounts and local groups on the Windows machine. |
+| Local user properties | Shows account details and group membership for a selected local user. |
+| Administrators group | Shows accounts with local administrator rights on the machine. |
+
+### PowerShell commands used
+
+```powershell
+Get-LocalUser
+Get-LocalGroupMember Administrators
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-LocalUser` | Lists local user accounts on the Windows machine. |
+| `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| UAC settings | User Account Control settings were opened and reviewed. |
+| Computer Management | Computer Management was opened successfully. |
+| Local users | Local users were reviewed through the GUI. |
+| Local user properties | The lab user account properties were reviewed. |
+| Administrators group | Local Administrators group membership was reviewed. |
+| PowerShell user check | Local users were listed with `Get-LocalUser`. |
+| PowerShell admin group check | Administrators group members were listed with `Get-LocalGroupMember Administrators`. |
+| Results file | `results/uac-admin-rights-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The UAC and admin rights review was completed successfully.
+
+This part demonstrated how to inspect User Account Control settings and verify local administrator membership using both GUI tools and PowerShell.
+
+Local administrator rights should always be reviewed carefully. In a lab VM, the lab user may have administrator rights so the technician can perform setup and troubleshooting tasks. In a real endpoint environment, unnecessary local administrator access should be avoided.
+
+### Screenshot evidence
+
+#### User Account Control settings
+
+![User Account Control settings](screenshots/screenshot-04a-uac-settings.png)
+
+#### Computer Management local users
+
+![Computer Management local users](screenshots/screenshot-04b-computer-management-local-users.png)
+
+#### Local user properties
+
+![Local user properties](screenshots/screenshot-04c-local-user-properties.png)
+
+#### Administrators group members
+
+![Administrators group members](screenshots/screenshot-04d-administrators-group-members.png)
+
+#### PowerShell local users
+
+![PowerShell local users](screenshots/screenshot-04e-powershell-local-users.png)
+
+#### PowerShell Administrators group
+
+![PowerShell Administrators group](screenshots/screenshot-04f-powershell-administrators-group.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/uac-admin-rights-review-results.txt | Contains the written UAC and admin rights review findings and conclusion. |
+
+### Notes
+
+This part focused on account elevation and local administrator access as endpoint security controls.
+
+UAC helps reduce silent system-level changes by requiring confirmation for administrative actions. Local administrator membership is important because accounts with local admin rights can make system-wide changes.

@@ -36,7 +36,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 1 | Project setup | Complete |
 | Part 2 | Windows Security baseline | Complete |
 | Part 3 | Windows Firewall review | Complete |
-| Part 4 | UAC and admin rights review | Planned |
+| Part 4 | UAC and admin rights review | Complete |
 | Part 5 | BitLocker or device encryption review | Planned |
 | Part 6 | Apps and startup review | Planned |
 | Part 7 | Security Event Viewer review | Planned |
@@ -74,6 +74,12 @@ Windows-11-Endpoint-Security-Lab/
 | screenshots/screenshot-03c-firewall-allowed-apps.png | Shows the allowed apps through firewall view. |
 | screenshots/screenshot-03d-firewall-powershell-profiles.png | Shows firewall profile status checked with PowerShell. |
 | screenshots/screenshot-03e-firewall-powershell-rules.png | Shows a sample of firewall rules listed with PowerShell. |
+| screenshots/screenshot-04a-uac-settings.png | Shows User Account Control settings. |
+| screenshots/screenshot-04b-computer-management-local-users.png | Shows local users in Computer Management. |
+| screenshots/screenshot-04c-local-user-properties.png | Shows local user account properties. |
+| screenshots/screenshot-04d-administrators-group-members.png | Shows local Administrators group members. |
+| screenshots/screenshot-04e-powershell-local-users.png | Shows local users listed with PowerShell. |
+| screenshots/screenshot-04f-powershell-administrators-group.png | Shows local Administrators group members listed with PowerShell. |
 
 ## Results and documentation
 
@@ -83,6 +89,7 @@ Windows-11-Endpoint-Security-Lab/
 | logbook.md | Chronological project logbook. |
 | results/windows-security-baseline-results.txt | Written summary of the Windows Security baseline review. |
 | results/windows-firewall-review-results.txt | Written summary of the Windows Firewall review. |
+| results/uac-admin-rights-review-results.txt | Written summary of the UAC and admin rights review. |
 
 ## Skills demonstrated
 
@@ -99,6 +106,9 @@ This lab demonstrates:
 * User Account Control review.
 * Local users and groups inspection.
 * Local administrator membership review.
+* Local account property review.
+* Computer Management navigation.
+* PowerShell local account verification.
 * BitLocker or device encryption status review.
 * Installed apps review.
 * Startup apps review.
@@ -125,6 +135,10 @@ This lab demonstrates:
 | App & browser control | Used to review reputation-based protection and exploit protection areas. |
 | Device security | Used to review device security and hardware-backed security areas. |
 | Allowed apps through firewall | Used to review which apps are allowed through Windows Defender Firewall. |
+| User Account Control settings | Used to review the UAC notification level. |
+| Computer Management | Used to review local users and local groups. |
+| Local Users and Groups | Used to inspect local accounts and group membership. |
+| Administrators group | Used to identify accounts with local administrator rights. |
 | `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
 | `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
 | `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
@@ -139,6 +153,8 @@ This lab demonstrates:
 | `Get-MpComputerStatus` | Shows Microsoft Defender Antivirus status and protection state. |
 | `Get-NetFirewallProfile` | Shows Windows Defender Firewall profile configuration for Domain, Private and Public profiles. |
 | `Get-NetFirewallRule \| Select-Object -First 10` | Lists a small sample of Windows Defender Firewall rules. |
+| `Get-LocalUser` | Lists local user accounts on the Windows machine. |
+| `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
 
 ## Key endpoint security lessons
 
@@ -153,6 +169,12 @@ The lab reviewed Virus & threat protection, Account protection, Firewall & netwo
 Part 3 demonstrated how to review Windows Defender Firewall through the GUI and PowerShell.
 
 The lab reviewed the active network profile, allowed apps through firewall, firewall profile status and a sample of firewall rules. This showed how a technician can confirm that firewall protections are visible and configurable through normal Windows tools.
+
+### UAC and admin rights review
+
+Part 4 demonstrated how to review User Account Control settings and local administrator membership.
+
+The lab reviewed UAC settings, local users, local user account properties, the Administrators group and PowerShell verification of local accounts and administrator membership. This showed how a technician can identify which accounts exist locally and which accounts have elevated privileges.
 
 ## Project evidence policy
 
