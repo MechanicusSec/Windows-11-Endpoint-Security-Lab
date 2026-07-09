@@ -1,0 +1,40 @@
+Windows 11 Endpoint Security Lab
+Part 2 - Windows Security baseline results
+
+Goal:
+Review the Windows Security dashboard and confirm the main endpoint security areas in the Windows 11 lab VM.
+
+Areas reviewed:
+- Windows Security home
+- Virus & threat protection
+- Account protection
+- Firewall & network protection
+- App & browser control
+- Device security
+- Microsoft Defender status through PowerShell
+
+Tools used:
+- Windows Settings
+- Windows Security
+- PowerShell
+
+PowerShell command used:
+Get-MpComputerStatus
+
+Findings:
+- Windows Security was opened successfully.
+- The Windows Security home dashboard was reviewed.
+- Virus & threat protection was reviewed.
+- Account protection was reviewed.
+- Firewall & network protection was reviewed.
+- App & browser control was reviewed.
+- Device security was reviewed.
+- Microsoft Defender status was checked with PowerShell.
+
+Conclusion:
+The Windows Security baseline review was completed successfully.
+
+The lab demonstrated where the main Windows 11 security areas are located and how Microsoft Defender status can be verified with PowerShell.
+
+Notes:
+Some security features may appear differently in a virtual machine compared to physical hardware. Any unavailable or limited VM-specific features should be documented as lab findings, not treated as documentation errors.
