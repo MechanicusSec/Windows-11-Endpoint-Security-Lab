@@ -635,3 +635,132 @@ This part focused on disk encryption as an endpoint security control.
 Disk encryption helps protect data if a device is lost, stolen or accessed offline. In a lab VM, encryption features may be unavailable, disabled or limited depending on Windows edition, virtual hardware and configuration.
 
 Some BitLocker commands require administrative rights. If access is denied in a normal PowerShell session, the command should be rerun from PowerShell opened as Administrator.
+
+---
+
+## 2026-07-08 — Part 6: Apps and startup review
+
+### Goal
+
+Review installed applications and startup apps in the Windows 11 lab VM.
+
+The purpose of this part was to inspect installed software and startup items using Windows Settings, Task Manager and PowerShell.
+
+### Work completed
+
+* Opened Installed apps in Windows Settings.
+* Reviewed installed applications.
+* Opened Startup apps in Windows Settings.
+* Reviewed apps configured to start automatically when the user signs in.
+* Opened Task Manager.
+* Reviewed Startup apps in Task Manager.
+* Opened PowerShell in the Windows 11 VM.
+* Listed installed applications from the Windows Registry with PowerShell.
+* Listed startup commands with PowerShell.
+* Created `results/apps-startup-review-results.txt`.
+* Captured screenshot evidence for the apps and startup review.
+
+### GUI paths used
+
+```text
+Start
+→ Settings
+→ Apps
+→ Installed apps
+```
+
+```text
+Start
+→ Settings
+→ Apps
+→ Startup
+```
+
+```text
+Ctrl + Shift + Esc
+→ Startup apps
+```
+
+```text
+Start
+→ Search
+→ Task Manager
+→ Startup apps
+```
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Installed apps | Shows applications installed on the Windows machine. |
+| Startup apps in Settings | Shows apps configured to start automatically when the user signs in. |
+| Startup apps in Task Manager | Shows startup apps, publisher information, status and startup impact where available. |
+| Installed applications through PowerShell | Provides command-line evidence of installed application entries. |
+| Startup commands through PowerShell | Provides command-line evidence of startup commands configured on the machine. |
+
+### PowerShell commands used
+
+```powershell
+Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher
+Get-CimInstance Win32_StartupCommand
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* \| Select-Object DisplayName, DisplayVersion, Publisher` | Lists installed application entries from the Windows Registry and shows selected fields such as name, version and publisher. |
+| `Get-CimInstance Win32_StartupCommand` | Lists startup commands configured on the Windows machine. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Installed apps | Installed apps were opened and reviewed in Windows Settings. |
+| Startup apps in Settings | Startup apps were opened and reviewed in Windows Settings. |
+| Task Manager startup apps | Startup apps were reviewed in Task Manager. |
+| PowerShell installed apps check | Installed application entries were listed with PowerShell. |
+| PowerShell startup commands check | Startup commands were listed with PowerShell. |
+| Results file | `results/apps-startup-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The apps and startup review was completed successfully.
+
+This part demonstrated how to review installed applications and startup items using both GUI tools and PowerShell.
+
+Installed apps and startup items should be reviewed during endpoint security checks because unknown, unnecessary or unwanted software can increase risk or affect system performance.
+
+### Screenshot evidence
+
+#### Installed apps in Settings
+
+![Installed apps in Settings](screenshots/screenshot-06a-installed-apps-settings.png)
+
+#### Startup apps in Settings
+
+![Startup apps in Settings](screenshots/screenshot-06b-startup-apps-settings.png)
+
+#### Startup apps in Task Manager
+
+![Startup apps in Task Manager](screenshots/screenshot-06c-task-manager-startup-apps.png)
+
+#### PowerShell installed apps
+
+![PowerShell installed apps](screenshots/screenshot-06d-powershell-installed-apps.png)
+
+#### PowerShell startup commands
+
+![PowerShell startup commands](screenshots/screenshot-06e-powershell-startup-commands.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/apps-startup-review-results.txt | Contains the written apps and startup review findings and conclusion. |
+
+### Notes
+
+This part focused on software inventory and startup behavior as endpoint security review areas.
+
+Unknown or unnecessary installed applications can increase risk. Startup apps and startup commands should also be reviewed because they can affect performance, persistence and the user sign-in experience. In a lab VM, Microsoft components, VMware tools and normal built-in Windows apps are expected unless something unusual is observed.
