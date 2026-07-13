@@ -1127,3 +1127,89 @@ This part created a reusable command reference that supports the rest of the lab
 This part focused on documentation quality and command understanding.
 
 A command reference makes the project easier to review, reuse and explain during portfolio review or interview preparation. It also shows that the commands were understood rather than copied blindly from the terminal void, where many unfortunate careers begin.
+
+---
+
+## 2026-07-08 — Part 10: Final endpoint security report
+
+### Goal
+
+Create the final report for the Windows 11 Endpoint Security Lab.
+
+The purpose of this part was to summarize the completed project in one professional report that explains the scenario, environment, security areas reviewed, tools used, evidence collected, limitations and conclusion.
+
+### Work completed
+
+* Created `docs/final-endpoint-security-report.md`.
+* Summarized the project overview and scenario.
+* Documented the lab environment.
+* Listed all completed project parts.
+* Summarized Windows Security baseline review.
+* Summarized Windows Firewall review.
+* Summarized UAC and local administrator rights review.
+* Summarized BitLocker or Device encryption review.
+* Summarized installed apps and startup apps review.
+* Summarized Security Event Viewer review.
+* Summarized local folder permissions review.
+* Summarized security command notes.
+* Documented evidence collected during the project.
+* Listed results files created during the project.
+* Documented skills demonstrated.
+* Added limitations for the Windows 11 VM lab environment.
+* Added privacy and safety notes.
+* Added the final project conclusion.
+* No screenshot evidence was required because the final report itself is the artifact for this part.
+
+### File created
+
+| File | Description |
+| --- | --- |
+| `docs/final-endpoint-security-report.md` | Final report summarizing the completed Windows 11 endpoint security review. |
+
+### Areas summarized in the final report
+
+| Area | Summary |
+| --- | --- |
+| Windows Security baseline | Summarized review of Windows Security dashboard and Defender status verification. |
+| Windows Firewall | Summarized firewall profile, active profile, allowed apps and PowerShell verification. |
+| UAC and admin rights | Summarized UAC settings, local users and local administrator membership review. |
+| BitLocker or Device encryption | Summarized drive encryption availability and BitLocker status checks. |
+| Apps and startup review | Summarized installed apps, startup apps and PowerShell inventory checks. |
+| Security Event Viewer | Summarized Security log review, logon-related event filtering and PowerShell verification. |
+| Local folder permissions | Summarized NTFS permissions review on a safe temporary test folder. |
+| Security command notes | Summarized the reusable command reference created for the lab. |
+
+### Evidence summarized
+
+| Evidence type | Description |
+| --- | --- |
+| Screenshots | Used as visual proof of GUI and PowerShell review steps. |
+| Results files | Used to summarize findings for each technical review area. |
+| Logbook entries | Used to document the project chronologically. |
+| README updates | Used to track project status and evidence. |
+| Command notes | Used as reusable command reference documentation. |
+| Final report | Used as the completed project summary. |
+| Git commits | Used to preserve project history and publish changes. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Final report file | `docs/final-endpoint-security-report.md` was created. |
+| Project status | All planned parts were completed. |
+| Evidence summary | Screenshots, results files, notes, logbook and README were summarized. |
+| Limitations | VM-specific limitations were documented. |
+| Privacy notes | Safe lab and privacy guidance were included. |
+| Screenshot evidence | Not required for this part because the final report is the artifact. |
+
+### Troubleshooting conclusion
+
+The final endpoint security report was completed successfully.
+
+This part completed the Windows 11 Endpoint Security Lab by creating a single final report that summarizes the full project and the practical security review work performed.
+
+### Notes
+
+This part focused on final project documentation.
+
+The final report helps make the project easier to review as portfolio evidence. It connects the screenshots, results files, command notes and logbook into one complete endpoint security review summary.

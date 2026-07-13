@@ -27,7 +27,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Virtualization | VMware-based Windows 11 VM |
 | Lab user | Local lab account |
 | Documentation tools | VS Code, Markdown, Git and GitHub |
-| Evidence | Screenshots, results notes and final report |
+| Evidence | Screenshots, results notes, command notes and final report |
 
 ## Planned parts
 
@@ -42,7 +42,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 7 | Security Event Viewer review | Complete |
 | Part 8 | Local folder permissions review | Complete |
 | Part 9 | Security command notes | Complete |
-| Part 10 | Final endpoint security report | Planned |
+| Part 10 | Final endpoint security report | Complete |
 
 ## Project structure
 
@@ -115,6 +115,7 @@ Windows-11-Endpoint-Security-Lab/
 | results/security-event-viewer-review-results.txt | Written summary of the Security Event Viewer review. |
 | results/local-folder-permissions-review-results.txt | Written summary of the local folder permissions review. |
 | notes/windows-security-command-notes.md | Reusable command reference for the Windows 11 Endpoint Security Lab. |
+| docs/final-endpoint-security-report.md | Final report summarizing the completed Windows 11 endpoint security review. |
 
 ## Skills demonstrated
 
@@ -154,6 +155,7 @@ This lab demonstrates:
 * Screenshot evidence collection.
 * Security command reference creation.
 * Command purpose documentation.
+* Final report writing.
 * Technical documentation.
 * Git and GitHub workflow.
 
@@ -162,7 +164,7 @@ This lab demonstrates:
 | Tool or command | Purpose |
 | --- | --- |
 | File Explorer | Used to create and review the project folder. |
-| VS Code | Used to edit Markdown documentation, manage project files and create the security command notes file. |
+| VS Code | Used to edit Markdown documentation, manage project files, create command notes and write the final report. |
 | PowerShell terminal | Used to create folders, create files and run Git commands. |
 | Git | Used for local version control. |
 | GitHub | Used to publish the project as portfolio evidence. |
@@ -266,6 +268,12 @@ The lab created a safe temporary test folder, reviewed the folder Security tab, 
 Part 9 demonstrated how to create a reusable command reference.
 
 The lab collected the main commands used across the project into `notes/windows-security-command-notes.md`. This created a single reference for project setup, Microsoft Defender, Windows Firewall, local users and administrators, BitLocker, installed apps, startup commands, Security logs, NTFS permissions and Git workflow.
+
+### Final endpoint security report
+
+Part 10 completed the final project report.
+
+The final report summarizes the project purpose, lab environment, completed parts, security areas reviewed, evidence collected, results files, skills demonstrated, limitations, privacy notes and conclusion. This provides a single professional summary of the completed Windows 11 endpoint security review.
 
 ## Project evidence policy
 
