@@ -40,7 +40,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 5 | BitLocker or device encryption review | Complete |
 | Part 6 | Apps and startup review | Complete |
 | Part 7 | Security Event Viewer review | Complete |
-| Part 8 | Local folder permissions review | Planned |
+| Part 8 | Local folder permissions review | Complete |
 | Part 9 | Security command notes | Planned |
 | Part 10 | Final endpoint security report | Planned |
 
@@ -95,6 +95,11 @@ Windows-11-Endpoint-Security-Lab/
 | screenshots/screenshot-07d-security-log-filtered-logon-events.png | Shows filtered logon-related Security events. |
 | screenshots/screenshot-07e-security-event-details.png | Shows details for Security Event ID 4672. |
 | screenshots/screenshot-07f-powershell-security-log.png | Shows Security log access checked with PowerShell. |
+| screenshots/screenshot-08a-security-test-folder-created.png | Shows the temporary security test folder created and confirmed with PowerShell. |
+| screenshots/screenshot-08b-folder-security-tab.png | Shows the folder Security tab and NTFS permissions view. |
+| screenshots/screenshot-08c-folder-advanced-security-settings.png | Shows Advanced security settings for the test folder. |
+| screenshots/screenshot-08d-powershell-icacls-permissions.png | Shows NTFS permissions checked with icacls. |
+| screenshots/screenshot-08e-folder-cleanup-confirmed.png | Shows the test folder cleanup confirmed with Test-Path. |
 
 ## Results and documentation
 
@@ -108,6 +113,7 @@ Windows-11-Endpoint-Security-Lab/
 | results/bitlocker-device-encryption-review-results.txt | Written summary of the BitLocker or device encryption review. |
 | results/apps-startup-review-results.txt | Written summary of the apps and startup review. |
 | results/security-event-viewer-review-results.txt | Written summary of the Security Event Viewer review. |
+| results/local-folder-permissions-review-results.txt | Written summary of the local folder permissions review. |
 
 ## Skills demonstrated
 
@@ -140,6 +146,10 @@ This lab demonstrates:
 * Security event filtering.
 * PowerShell Security log verification.
 * NTFS folder permission review.
+* Folder Security tab review.
+* Advanced NTFS permission review.
+* PowerShell folder permission verification.
+* Safe test folder creation and cleanup.
 * Screenshot evidence collection.
 * Technical documentation.
 * Git and GitHub workflow.
@@ -175,6 +185,9 @@ This lab demonstrates:
 | Event Viewer | Used to review Windows event logs. |
 | Security log | Used to review Windows audit and logon-related events. |
 | Filter Current Log | Used to filter Security log events by specific event IDs. |
+| Folder Properties | Used to review folder information and Security tab permissions. |
+| Security tab | Used to review NTFS permissions for the test folder. |
+| Advanced security settings | Used to review inherited permissions, ownership and detailed permission entries. |
 | `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
 | `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
 | `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
@@ -196,6 +209,10 @@ This lab demonstrates:
 | `Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* \| Select-Object DisplayName, DisplayVersion, Publisher` | Lists installed application entries from the Windows Registry and shows selected application details. |
 | `Get-CimInstance Win32_StartupCommand` | Lists startup commands configured on the Windows machine. |
 | `Get-WinEvent -LogName Security -MaxEvents 10` | Reads the 10 newest events from the Windows Security log. |
+| `mkdir C:\Temp\SecurityLabTest` | Creates a safe temporary folder for permissions review. |
+| `Test-Path C:\Temp\SecurityLabTest` | Checks whether the temporary test folder exists. |
+| `icacls C:\Temp\SecurityLabTest` | Displays NTFS permissions for the temporary test folder. |
+| `Remove-Item C:\Temp\SecurityLabTest -Recurse -Force` | Deletes the temporary test folder and its contents. |
 
 ## Key endpoint security lessons
 
@@ -234,6 +251,12 @@ The lab reviewed Installed apps in Windows Settings, Startup apps in Windows Set
 Part 7 demonstrated how to inspect Windows Security logs.
 
 The lab reviewed the Security log in Event Viewer, filtered logon-related events, opened Event ID 4672 for detailed review and verified Security log access with `Get-WinEvent`. This showed how a technician can review audit events and understand that Security log entries should be interpreted with context rather than treated as automatic proof of an active issue.
+
+### Local folder permissions review
+
+Part 8 demonstrated how to inspect NTFS folder permissions.
+
+The lab created a safe temporary test folder, reviewed the folder Security tab, opened Advanced security settings, verified permissions with `icacls` and removed the test folder afterward. This showed how a technician can inspect local file permissions without touching real user data or production folders.
 
 ## Project evidence policy
 

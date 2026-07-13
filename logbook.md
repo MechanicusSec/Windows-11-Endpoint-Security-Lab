@@ -908,3 +908,130 @@ Event ID 4672 is commonly associated with special privileges being assigned to a
 This part focused on Security event log review as an endpoint security investigation skill.
 
 Security log contents may differ depending on VM activity, audit policy and account activity. Event Viewer findings should be interpreted with context and not treated as proof of an active issue by themselves.
+
+---
+
+## 2026-07-08 — Part 8: Local folder permissions review
+
+### Goal
+
+Review NTFS folder permissions on a safe test folder in the Windows 11 lab VM.
+
+The purpose of this part was to inspect local folder permissions using both GUI tools and PowerShell without modifying real user data or production folders.
+
+### Work completed
+
+* Opened PowerShell in the Windows 11 VM.
+* Created a safe temporary test folder at `C:\Temp\SecurityLabTest`.
+* Confirmed that the test folder existed with `Test-Path`.
+* Opened the test folder in File Explorer.
+* Opened the folder Properties window.
+* Reviewed the Security tab.
+* Opened Advanced security settings.
+* Reviewed owner, permission entries and inheritance information.
+* Checked NTFS permissions with `icacls`.
+* Removed the temporary test folder with `Remove-Item`.
+* Confirmed cleanup with `Test-Path`.
+* Created `results/local-folder-permissions-review-results.txt`.
+* Captured screenshot evidence for the local folder permissions review.
+
+### GUI paths used
+
+```text
+File Explorer
+→ C:\Temp
+→ SecurityLabTest
+→ Right-click
+→ Properties
+→ Security
+```
+
+```text
+Security tab
+→ Advanced
+```
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Temporary test folder | Safe folder used for review without touching real user data. |
+| Folder Properties | Shows basic folder information and access to the Security tab. |
+| Security tab | Shows NTFS permissions for users and groups. |
+| Advanced security settings | Shows detailed permissions, inheritance, ownership and permission entries. |
+| NTFS permissions | Controls who can read, write, modify or fully control files and folders. |
+
+### PowerShell commands used
+
+```powershell
+mkdir C:\Temp\SecurityLabTest
+Test-Path C:\Temp\SecurityLabTest
+icacls C:\Temp\SecurityLabTest
+Remove-Item C:\Temp\SecurityLabTest -Recurse -Force
+Test-Path C:\Temp\SecurityLabTest
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `mkdir C:\Temp\SecurityLabTest` | Creates the safe temporary test folder. |
+| `Test-Path C:\Temp\SecurityLabTest` | Checks whether the test folder exists. |
+| `icacls C:\Temp\SecurityLabTest` | Displays NTFS permissions for the test folder. |
+| `Remove-Item C:\Temp\SecurityLabTest -Recurse -Force` | Deletes the test folder and anything inside it. |
+| Final `Test-Path C:\Temp\SecurityLabTest` | Confirms the test folder was removed. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Test folder creation | A safe temporary test folder was created. |
+| Folder existence check | The folder was confirmed with `Test-Path`. |
+| Security tab | Folder Security tab permissions were reviewed. |
+| Advanced security settings | Detailed permission settings were reviewed. |
+| icacls permission check | NTFS permissions were checked with `icacls`. |
+| Cleanup | The test folder was removed after review. |
+| Cleanup verification | `Test-Path` confirmed the folder no longer existed. |
+| Results file | `results/local-folder-permissions-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The local folder permissions review was completed successfully.
+
+This part demonstrated how to inspect NTFS folder permissions using File Explorer, folder Properties, Advanced security settings and PowerShell.
+
+The test folder was created only for this lab and removed after the review. No real user data or production folders were modified.
+
+### Screenshot evidence
+
+#### Security test folder created
+
+![Security test folder created](screenshots/screenshot-08a-security-test-folder-created.png)
+
+#### Folder Security tab
+
+![Folder Security tab](screenshots/screenshot-08b-folder-security-tab.png)
+
+#### Folder Advanced security settings
+
+![Folder Advanced security settings](screenshots/screenshot-08c-folder-advanced-security-settings.png)
+
+#### PowerShell icacls permissions
+
+![PowerShell icacls permissions](screenshots/screenshot-08d-powershell-icacls-permissions.png)
+
+#### Folder cleanup confirmed
+
+![Folder cleanup confirmed](screenshots/screenshot-08e-folder-cleanup-confirmed.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/local-folder-permissions-review-results.txt | Contains the written local folder permissions review findings and conclusion. |
+
+### Notes
+
+This part focused on NTFS permissions as an endpoint security control.
+
+Folder permissions decide which users and groups can read, write, modify or control local files and folders. Reviewing permissions through both the GUI and PowerShell gives useful evidence for helpdesk, desktop support and junior sysadmin work.
