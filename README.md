@@ -41,7 +41,7 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 6 | Apps and startup review | Complete |
 | Part 7 | Security Event Viewer review | Complete |
 | Part 8 | Local folder permissions review | Complete |
-| Part 9 | Security command notes | Planned |
+| Part 9 | Security command notes | Complete |
 | Part 10 | Final endpoint security report | Planned |
 
 ## Project structure
@@ -114,6 +114,7 @@ Windows-11-Endpoint-Security-Lab/
 | results/apps-startup-review-results.txt | Written summary of the apps and startup review. |
 | results/security-event-viewer-review-results.txt | Written summary of the Security Event Viewer review. |
 | results/local-folder-permissions-review-results.txt | Written summary of the local folder permissions review. |
+| notes/windows-security-command-notes.md | Reusable command reference for the Windows 11 Endpoint Security Lab. |
 
 ## Skills demonstrated
 
@@ -151,6 +152,8 @@ This lab demonstrates:
 * PowerShell folder permission verification.
 * Safe test folder creation and cleanup.
 * Screenshot evidence collection.
+* Security command reference creation.
+* Command purpose documentation.
 * Technical documentation.
 * Git and GitHub workflow.
 
@@ -159,7 +162,7 @@ This lab demonstrates:
 | Tool or command | Purpose |
 | --- | --- |
 | File Explorer | Used to create and review the project folder. |
-| VS Code | Used to edit Markdown documentation and manage project files. |
+| VS Code | Used to edit Markdown documentation, manage project files and create the security command notes file. |
 | PowerShell terminal | Used to create folders, create files and run Git commands. |
 | Git | Used for local version control. |
 | GitHub | Used to publish the project as portfolio evidence. |
@@ -257,6 +260,12 @@ The lab reviewed the Security log in Event Viewer, filtered logon-related events
 Part 8 demonstrated how to inspect NTFS folder permissions.
 
 The lab created a safe temporary test folder, reviewed the folder Security tab, opened Advanced security settings, verified permissions with `icacls` and removed the test folder afterward. This showed how a technician can inspect local file permissions without touching real user data or production folders.
+
+### Security command notes
+
+Part 9 demonstrated how to create a reusable command reference.
+
+The lab collected the main commands used across the project into `notes/windows-security-command-notes.md`. This created a single reference for project setup, Microsoft Defender, Windows Firewall, local users and administrators, BitLocker, installed apps, startup commands, Security logs, NTFS permissions and Git workflow.
 
 ## Project evidence policy
 

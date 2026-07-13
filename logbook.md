@@ -1035,3 +1035,95 @@ The test folder was created only for this lab and removed after the review. No r
 This part focused on NTFS permissions as an endpoint security control.
 
 Folder permissions decide which users and groups can read, write, modify or control local files and folders. Reviewing permissions through both the GUI and PowerShell gives useful evidence for helpdesk, desktop support and junior sysadmin work.
+
+---
+
+## 2026-07-08 — Part 9: Security command notes
+
+### Goal
+
+Create a reusable command reference file for the Windows 11 Endpoint Security Lab.
+
+The purpose of this part was to collect the main commands used throughout the lab into one readable notes file that explains what each command does and when it is useful.
+
+### Work completed
+
+* Created `notes/windows-security-command-notes.md`.
+* Added project setup commands.
+* Added Microsoft Defender status command notes.
+* Added Windows Firewall command notes.
+* Added UAC and local administrator review command notes.
+* Added BitLocker and Device encryption command notes.
+* Added installed apps and startup command notes.
+* Added Security Event Viewer PowerShell command notes.
+* Added local folder permissions command notes.
+* Added Git workflow command notes.
+* Documented command purposes in plain language.
+* Skipped screenshot evidence for this part because the command notes file itself is the project artifact.
+
+### File created
+
+| File | Description |
+| --- | --- |
+| `notes/windows-security-command-notes.md` | Reusable command reference for the Windows 11 Endpoint Security Lab. |
+
+### Command groups documented
+
+| Command group | Purpose |
+| --- | --- |
+| Project setup commands | Documents folder creation, starter files and project structure commands. |
+| Windows Security baseline commands | Documents Microsoft Defender status verification. |
+| Windows Firewall commands | Documents firewall profile and firewall rule checks. |
+| UAC and local administrator review commands | Documents local users and administrator group membership checks. |
+| BitLocker and Device encryption commands | Documents drive encryption status checks. |
+| Apps and startup review commands | Documents installed application and startup command checks. |
+| Security Event Viewer commands | Documents Security log access through PowerShell. |
+| Local folder permissions commands | Documents test folder creation, NTFS permission review and cleanup. |
+| Git commands | Documents project version control workflow. |
+
+### Key commands documented
+
+```powershell
+mkdir docs, notes, results, screenshots, scripts
+New-Item README.md, logbook.md -ItemType File
+tree /F
+Get-MpComputerStatus
+Get-NetFirewallProfile
+Get-NetFirewallRule | Select-Object -First 10
+Get-LocalUser
+Get-LocalGroupMember Administrators
+manage-bde -status
+Get-BitLockerVolume
+Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher
+Get-CimInstance Win32_StartupCommand
+Get-WinEvent -LogName Security -MaxEvents 10
+mkdir C:\Temp\SecurityLabTest
+Test-Path C:\Temp\SecurityLabTest
+icacls C:\Temp\SecurityLabTest
+Remove-Item C:\Temp\SecurityLabTest -Recurse -Force
+git status
+git add
+git commit
+git push
+```
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Notes file | `notes/windows-security-command-notes.md` was created. |
+| Command coverage | Commands from Parts 1 through 8 were documented. |
+| Command explanations | Each command group includes purpose and usage notes. |
+| Screenshot evidence | Skipped intentionally because the notes file is the artifact for this part. |
+
+### Troubleshooting conclusion
+
+The security command notes part was completed successfully.
+
+This part created a reusable command reference that supports the rest of the lab documentation. It helps explain not only which commands were used, but also what they do and why they are useful during endpoint security review work.
+
+### Notes
+
+This part focused on documentation quality and command understanding.
+
+A command reference makes the project easier to review, reuse and explain during portfolio review or interview preparation. It also shows that the commands were understood rather than copied blindly from the terminal void, where many unfortunate careers begin.
