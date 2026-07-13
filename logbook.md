@@ -764,3 +764,147 @@ Installed apps and startup items should be reviewed during endpoint security che
 This part focused on software inventory and startup behavior as endpoint security review areas.
 
 Unknown or unnecessary installed applications can increase risk. Startup apps and startup commands should also be reviewed because they can affect performance, persistence and the user sign-in experience. In a lab VM, Microsoft components, VMware tools and normal built-in Windows apps are expected unless something unusual is observed.
+
+---
+
+## 2026-07-08 — Part 7: Security Event Viewer review
+
+### Goal
+
+Review Windows Security event logs in the Windows 11 lab VM.
+
+The purpose of this part was to inspect Security log activity using Event Viewer, filter for logon-related events and verify Security log access with PowerShell.
+
+### Work completed
+
+* Opened Event Viewer.
+* Opened Windows Logs.
+* Opened the Security log.
+* Reviewed recent Security events.
+* Opened Filter Current Log.
+* Filtered the Security log for logon-related event IDs.
+* Reviewed filtered Security events.
+* Opened a Security event with Event ID 4672.
+* Reviewed the event General and Details information.
+* Opened PowerShell in the Windows 11 VM.
+* Checked Security log access with `Get-WinEvent -LogName Security -MaxEvents 10`.
+* Created `results/security-event-viewer-review-results.txt`.
+* Captured screenshot evidence for the Security Event Viewer review.
+
+### GUI paths used
+
+```text
+Start
+→ Search
+→ Event Viewer
+```
+
+```text
+Win + R
+→ eventvwr.msc
+```
+
+```text
+Event Viewer
+→ Windows Logs
+→ Security
+```
+
+```text
+Security log
+→ Filter Current Log
+```
+
+### Event IDs reviewed
+
+| Event ID | Meaning |
+| --- | --- |
+| 4624 | Successful logon. |
+| 4625 | Failed logon. |
+| 4634 | Logoff. |
+| 4672 | Special privileges assigned to a new logon. |
+
+### Areas reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Event Viewer | Windows tool used to review system, application and security logs. |
+| Security log | Windows audit log used to review security-related events. |
+| Recent Security events | Shows recent audit activity on the system. |
+| Filter Current Log | Used to filter Security log events by event ID. |
+| Event details | Shows readable and structured information about a selected event. |
+| PowerShell Security log access | Provides command-line verification that the Security log can be queried. |
+
+### PowerShell command used
+
+```powershell
+Get-WinEvent -LogName Security -MaxEvents 10
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-WinEvent` | Reads Windows event logs. |
+| `-LogName Security` | Selects the Security log. |
+| `-MaxEvents 10` | Limits output to the 10 newest events so the result stays readable. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Event Viewer | Event Viewer was opened successfully. |
+| Security log | The Security log was opened and reviewed. |
+| Recent events | Recent Security events were reviewed. |
+| Filter Current Log | The Security log was filtered for logon-related events. |
+| Filtered events | Filtered logon-related events were reviewed. |
+| Event details | Event ID 4672 was opened and reviewed. |
+| Details tab | The Details tab showed structured event data, including SYSTEM / NT AUTHORITY and a privilege list. |
+| PowerShell Security log check | Security log access was checked with `Get-WinEvent -LogName Security -MaxEvents 10`. |
+| Results file | `results/security-event-viewer-review-results.txt` was created. |
+
+### Troubleshooting conclusion
+
+The Security Event Viewer review was completed successfully.
+
+This part demonstrated how to inspect Windows Security logs using Event Viewer and how to verify Security log access with PowerShell.
+
+Event ID 4672 is commonly associated with special privileges being assigned to a new logon. Seeing SYSTEM / NT AUTHORITY in this context can be normal Windows activity and is not automatically a security problem.
+
+### Screenshot evidence
+
+#### Event Viewer Security log
+
+![Event Viewer Security log](screenshots/screenshot-07a-event-viewer-security-log.png)
+
+#### Security log recent events
+
+![Security log recent events](screenshots/screenshot-07b-security-log-recent-events.png)
+
+#### Security log filter current log
+
+![Security log filter current log](screenshots/screenshot-07c-security-log-filter-current-log.png)
+
+#### Security log filtered logon events
+
+![Security log filtered logon events](screenshots/screenshot-07d-security-log-filtered-logon-events.png)
+
+#### Security event details
+
+![Security event details](screenshots/screenshot-07e-security-event-details.png)
+
+#### PowerShell Security log
+
+![PowerShell Security log](screenshots/screenshot-07f-powershell-security-log.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/security-event-viewer-review-results.txt | Contains the written Security Event Viewer review findings and conclusion. |
+
+### Notes
+
+This part focused on Security event log review as an endpoint security investigation skill.
+
+Security log contents may differ depending on VM activity, audit policy and account activity. Event Viewer findings should be interpreted with context and not treated as proof of an active issue by themselves.

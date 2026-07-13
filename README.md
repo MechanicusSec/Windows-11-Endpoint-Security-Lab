@@ -38,8 +38,8 @@ The project demonstrates how a technician can inspect security settings, verify 
 | Part 3 | Windows Firewall review | Complete |
 | Part 4 | UAC and admin rights review | Complete |
 | Part 5 | BitLocker or device encryption review | Complete |
-| Part 6 | Apps and startup review | Planned |
-| Part 7 | Security Event Viewer review | Planned |
+| Part 6 | Apps and startup review | Complete |
+| Part 7 | Security Event Viewer review | Complete |
 | Part 8 | Local folder permissions review | Planned |
 | Part 9 | Security command notes | Planned |
 | Part 10 | Final endpoint security report | Planned |
@@ -84,6 +84,17 @@ Windows-11-Endpoint-Security-Lab/
 | screenshots/screenshot-05b-bitlocker-control-panel.png | Shows BitLocker Drive Encryption in Control Panel. |
 | screenshots/screenshot-05d-manage-bde-status-admin.png | Shows BitLocker status checked with manage-bde from an elevated PowerShell session. |
 | screenshots/screenshot-05e-powershell-bitlocker-volume.png | Shows BitLocker volume status checked with PowerShell. |
+| screenshots/screenshot-06a-installed-apps-settings.png | Shows Installed apps in Windows Settings. |
+| screenshots/screenshot-06b-startup-apps-settings.png | Shows Startup apps in Windows Settings. |
+| screenshots/screenshot-06c-task-manager-startup-apps.png | Shows Startup apps in Task Manager. |
+| screenshots/screenshot-06d-powershell-installed-apps.png | Shows installed applications listed with PowerShell. |
+| screenshots/screenshot-06e-powershell-startup-commands.png | Shows startup commands listed with PowerShell. |
+| screenshots/screenshot-07a-event-viewer-security-log.png | Shows the Security log opened in Event Viewer. |
+| screenshots/screenshot-07b-security-log-recent-events.png | Shows recent Security log events. |
+| screenshots/screenshot-07c-security-log-filter-current-log.png | Shows the Filter Current Log window for Security event filtering. |
+| screenshots/screenshot-07d-security-log-filtered-logon-events.png | Shows filtered logon-related Security events. |
+| screenshots/screenshot-07e-security-event-details.png | Shows details for Security Event ID 4672. |
+| screenshots/screenshot-07f-powershell-security-log.png | Shows Security log access checked with PowerShell. |
 
 ## Results and documentation
 
@@ -95,6 +106,8 @@ Windows-11-Endpoint-Security-Lab/
 | results/windows-firewall-review-results.txt | Written summary of the Windows Firewall review. |
 | results/uac-admin-rights-review-results.txt | Written summary of the UAC and admin rights review. |
 | results/bitlocker-device-encryption-review-results.txt | Written summary of the BitLocker or device encryption review. |
+| results/apps-startup-review-results.txt | Written summary of the apps and startup review. |
+| results/security-event-viewer-review-results.txt | Written summary of the Security Event Viewer review. |
 
 ## Skills demonstrated
 
@@ -119,8 +132,13 @@ This lab demonstrates:
 * Device encryption availability review.
 * Disk encryption command-line verification.
 * Installed apps review.
+* Installed applications inventory review.
 * Startup apps review.
+* Startup apps review through Settings and Task Manager.
 * Security event log review.
+* Event Viewer Security log review.
+* Security event filtering.
+* PowerShell Security log verification.
 * NTFS folder permission review.
 * Screenshot evidence collection.
 * Technical documentation.
@@ -151,6 +169,12 @@ This lab demonstrates:
 | Control Panel | Used to access the classic BitLocker Drive Encryption interface. |
 | BitLocker Drive Encryption | Used to review drive encryption status and BitLocker management options. |
 | Elevated PowerShell | Used to run BitLocker commands that require administrative rights. |
+| Installed apps settings | Used to review installed applications in Windows Settings. |
+| Startup apps settings | Used to review apps configured to start automatically when the user signs in. |
+| Task Manager | Used to review startup apps and startup impact. |
+| Event Viewer | Used to review Windows event logs. |
+| Security log | Used to review Windows audit and logon-related events. |
+| Filter Current Log | Used to filter Security log events by specific event IDs. |
 | `mkdir docs, notes, results, screenshots, scripts` | Creates the main project folders. |
 | `New-Item README.md, logbook.md -ItemType File` | Creates the starter README and logbook files. |
 | `New-Item docs\.gitkeep, notes\.gitkeep, results\.gitkeep, screenshots\.gitkeep, scripts\.gitkeep -ItemType File` | Creates placeholder files so Git can track empty folders. |
@@ -169,6 +193,9 @@ This lab demonstrates:
 | `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
 | `manage-bde -status` | Shows BitLocker status for available volumes. |
 | `Get-BitLockerVolume` | Shows BitLocker volume status through PowerShell. |
+| `Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* \| Select-Object DisplayName, DisplayVersion, Publisher` | Lists installed application entries from the Windows Registry and shows selected application details. |
+| `Get-CimInstance Win32_StartupCommand` | Lists startup commands configured on the Windows machine. |
+| `Get-WinEvent -LogName Security -MaxEvents 10` | Reads the 10 newest events from the Windows Security log. |
 
 ## Key endpoint security lessons
 
@@ -195,6 +222,18 @@ The lab reviewed UAC settings, local users, local user account properties, the A
 Part 5 demonstrated how to review Windows drive encryption status.
 
 The lab reviewed Device encryption settings, BitLocker Drive Encryption in Control Panel, `manage-bde -status` from an elevated PowerShell session and `Get-BitLockerVolume`. This showed how a technician can verify whether drive encryption is available, enabled, disabled or limited in a Windows 11 VM.
+
+### Apps and startup review
+
+Part 6 demonstrated how to review installed applications and startup items.
+
+The lab reviewed Installed apps in Windows Settings, Startup apps in Windows Settings, Startup apps in Task Manager, installed application entries through PowerShell and startup commands through PowerShell. This showed how a technician can identify installed software and auto-start entries that may affect endpoint performance or security.
+
+### Security Event Viewer review
+
+Part 7 demonstrated how to inspect Windows Security logs.
+
+The lab reviewed the Security log in Event Viewer, filtered logon-related events, opened Event ID 4672 for detailed review and verified Security log access with `Get-WinEvent`. This showed how a technician can review audit events and understand that Security log entries should be interpreted with context rather than treated as automatic proof of an active issue.
 
 ## Project evidence policy
 
